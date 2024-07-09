@@ -1,6 +1,10 @@
 FROM alpine:3.20
 
-RUN apk add --no-cache docker-cli python3 py3-pip && \
-    pip3 install --no-cache-dir --break-system-packages runlike
+RUN apk add --no-cache docker-cli python3 py3-pip git && \
+    git clone -b master https://github.com/DDS-Derek/runlike.git /runlike && \
+    cd /runlike && \
+    pip install --upgrade --no-cache-dir --break-system-packages pip && \
+    pip install --no-cache-dir --break-system-packages . && \
+    apk del --purge git
 
 ENTRYPOINT [ "runlike" ]
