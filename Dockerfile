@@ -1,4 +1,4 @@
-FROM alpine:3.20
+FROM alpine:3.21
 
 RUN apk add --no-cache docker-cli python3 py3-pip git && \
     git clone -b master https://github.com/DDS-Derek/runlike.git /runlike && \
